@@ -4,6 +4,8 @@ import io
 import json
 import ntpath
 import os
+import platform
+import shutil
 from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import MagicMock
@@ -329,6 +331,15 @@ def test_get_content_disposition_filename_decodes_rfc5987() -> None:
 
 
 def test_speech_transcription_uses_https(monkeypatch: pytest.MonkeyPatch) -> None:
+    # speech_recognition bundles an x86 FLAC binary on Windows, which cannot
+    # execute on native Windows ARM64 runners. Require a native FLAC executable.
+    if (
+        os.name == "nt"
+        and platform.machine().lower() in {"arm64", "aarch64"}
+        and shutil.which("flac") is None
+    ):
+        pytest.skip("Native FLAC executable unavailable on Windows ARM64")
+
     from speech_recognition.recognizers import google
 
     requests_sent = []
