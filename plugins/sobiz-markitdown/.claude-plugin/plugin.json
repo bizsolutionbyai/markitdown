@@ -1,0 +1,8 @@
+{
+  "name": "sobiz-markitdown",
+  "version": "1.0.0",
+  "description": "MarkItDown MCP document conversion for Claude",
+  "author": {
+    "name": "Sobiz Global"
+  }
+}
