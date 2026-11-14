@@ -1,0 +1,14 @@
+{
+  "name": "sobiz-marketplace",
+  "owner": {
+    "name": "Sobiz Global"
+  },
+  "plugins": [
+    {
+      "name": "sobiz-markitdown",
+      "source": "./plugins/sobiz-markitdown",
+      "description": "Convert documents to Markdown using Microsoft MarkItDown MCP",
+      "version": "1.0.0"
+    }
+  ]
+}
